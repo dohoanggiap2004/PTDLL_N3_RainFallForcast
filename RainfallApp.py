@@ -176,7 +176,7 @@ try:
     intercept_value.grid(row=3, column=1, padx=5, pady=2, sticky="w")
 
     # Chuẩn bị dữ liệu cho mô hình
-    X = weather_df[['province', 'max', 'min', 'wind', 'wind_d', 'humidi', 'cloud', 'pressure']]
+    X = weather_df[['province', 'max', 'min', 'wind', 'wind_d', 'humidi', 'cloud', 'pressure', 'date']]
     y = weather_df['rain']
 
     # Chuẩn hóa dữ liệu
@@ -224,8 +224,8 @@ def preprocess_input():
 
         # Xác thực các trường số
         for val, name in [
-            (max_temp_val, "Nhiệt độ tối đa"),
-            (min_temp_val, "Nhiệt độ tối thiểu"),
+            (max_temp_val, "Nhiệt độ cao nhất"),
+            (min_temp_val, "Nhiệt độ thấp nhất"),
             (wind_speed_val, "Tốc độ gió"),
             (humidity_val, "Độ ẩm"),
             (cloud_val, "Độ che phủ mây"),
