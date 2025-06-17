@@ -11,28 +11,37 @@ from tkcalendar import Calendar
 # Khởi tạo cửa sổ Tkinter
 root = tk.Tk()
 root.title("Dự đoán lượng mưa")
-root.geometry("700x600")
+root.state('zoomed')
 
 # Tạo Canvas và Scrollbar
 canvas = tk.Canvas(root, bg="#f5f7fa")
 scrollbar = ttk.Scrollbar(root, orient="vertical", command=canvas.yview)
-scrollable_frame = tk.Frame(canvas, bg="#f5f7fa")
-
-# Cấu hình Canvas và Scrollbar
-scrollable_frame.bind(
-    "<Configure>",
-    lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
-)
 canvas.configure(yscrollcommand=scrollbar.set)
 
-# Đặt Canvas và Scrollbar vào giao diện
-canvas.pack(side="left", fill="both", expand=True)
 scrollbar.pack(side="right", fill="y")
-canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+canvas.pack(side="left", fill="both", expand=True)
 
-# Frame chính trong scrollable_frame
-main_frame = tk.Frame(scrollable_frame, bg="white", padx=30, pady=30, relief="groove", bd=2)
-main_frame.pack(padx=30, pady=30, fill="both", expand=True)
+# Frame chứa nội dung trong Canvas
+container_frame = tk.Frame(canvas, bg="#f5f7fa")
+canvas_window = canvas.create_window((0, 0), window=container_frame, anchor="n")
+
+# Hàm cập nhật scrollregion và chiều rộng
+def on_configure(event):
+    canvas.configure(scrollregion=canvas.bbox("all"))
+    canvas.itemconfig(canvas_window, width=canvas.winfo_width())
+
+container_frame.bind("<Configure>", on_configure)
+
+# Frame chính được căn giữa trong container
+main_frame = tk.Frame(container_frame, bg="white", padx=30, pady=30, relief="groove", bd=2)
+main_frame.pack(pady=30)
+
+# Đảm bảo căn giữa sau khi giao diện được render
+def center_main_frame():
+    canvas.itemconfig(canvas_window, width=canvas.winfo_width())
+
+root.after_idle(center_main_frame)
+
 
 # Style
 style = ttk.Style()
