@@ -85,9 +85,6 @@ wind_directions_name_to_code = {v: k for k, v in wind_directions_dict.items()}
 # Đọc và xử lý dữ liệu từ file
 try:
     weather_df = pd.read_csv('Data/weather_filled_after.csv')
-    weather_df.dropna(inplace=True)
-    weather_df['province'] = weather_df['province'].astype(int)
-    weather_df['wind_d'] = weather_df['wind_d'].astype(int)
 
     # Lấy danh sách duy nhất cho province và wind_d
     unique_provinces_codes = sorted(weather_df['province'].unique().tolist())
@@ -103,10 +100,10 @@ try:
     add_field("Tỉnh:", 0, 0, province_cb)
 
     max_temp = tk.Entry(form_frame, font=("Arial", 13), width=27)
-    add_field("Nhiệt độ tối đa (°C):", 1, 0, max_temp)
+    add_field("Nhiệt độ cao nhất (°C):", 1, 0, max_temp)
 
     min_temp = tk.Entry(form_frame, font=("Arial", 13), width=27)
-    add_field("Nhiệt độ tối thiểu (°C):", 2, 0, min_temp)
+    add_field("Nhiệt độ thấp nhất (°C):", 2, 0, min_temp)
 
     wind_speed = tk.Entry(form_frame, font=("Arial", 13), width=27)
     add_field("Tốc độ gió (km/h):", 3, 0, wind_speed)
