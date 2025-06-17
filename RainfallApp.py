@@ -54,17 +54,15 @@ def add_field(label_text, row, col, widget):
     label.grid(row=row, column=col*2, padx=10, pady=5, sticky="e")
     widget.grid(row=row, column=col*2+1, padx=10, pady=5, sticky="w")
 
+provinces_dict = {0: 'Bac Lieu', 1: 'Ben Tre', 2: 'Bien Hoa', 3: 'Buon Me Thuot', 4: 'Ca Mau', 5: 'Cam Pha',
+                6: 'Cam Ranh', 7: 'Can Tho', 8: 'Chau Doc', 9: 'Da Lat', 10: 'Ha Noi', 11: 'Hai Duong',
+                12: 'Hai Phong', 13: 'Hanoi', 14: 'Ho Chi Minh City', 15: 'Hoa Binh', 16: 'Hong Gai',
+                17: 'Hue', 18: 'Long Xuyen', 19: 'My Tho', 20: 'Nam Dinh', 21: 'Nha Trang', 22: 'Phan Rang',
+                23: 'Phan Thiet', 24: 'Play Cu', 25: 'Qui Nhon', 26: 'Rach Gia', 27: 'Soc Trang',
+                28: 'Tam Ky', 29: 'Tan An', 30: 'Thai Nguyen', 31: 'Thanh Hoa', 32: 'Tra Vinh', 33: 'Tuy Hoa',
+                34: 'Uong Bi', 35: 'Viet Tri', 36: 'Vinh', 37: 'Vinh Long', 38: 'Vung Tau', 39: 'Yen Bai'}
+
 # Định nghĩa ánh xạ từ mã số sang tên tỉnh và hướng gió
-provinces_dict = {
-    0: 'Bac Lieu', 1: 'Ho Chi Minh City', 2: 'Tam Ky', 3: 'Ha Noi', 4: 'Da Nang',
-    5: 'Can Tho', 6: 'Hai Phong', 7: 'Quang Nam', 8: 'Binh Duong', 9: 'Dong Nai',
-    10: 'Nghe An', 11: 'Thanh Hoa', 12: 'Khanh Hoa', 13: 'Lam Dong', 14: 'Phu Yen',
-    15: 'Binh Thuan', 16: 'Ninh Thuan', 17: 'Tay Ninh', 18: 'Long An', 19: 'Tien Giang',
-    20: 'Ben Tre', 21: 'Tra Vinh', 22: 'Vinh Long', 23: 'Dong Thap', 24: 'An Giang',
-    25: 'Kien Giang', 26: 'Ca Mau', 27: 'Soc Trang', 28: 'Bac Giang', 29: 'Bac Ninh',
-    30: 'Ha Tinh', 31: 'Quang Binh', 32: 'Quang Tri', 33: 'Thua Thien Hue', 34: 'Binh Dinh',
-    35: 'Gia Lai', 36: 'Kon Tum', 37: 'Dak Lak', 38: 'Dak Nong', 39: 'Ba Ria - Vung Tau'
-}
 
 wind_directions_dict = {
     0: 'ESE', 1: 'SE', 2: 'E', 3: 'WSW', 4: 'ENE', 5: 'SW', 6: 'SSE',
